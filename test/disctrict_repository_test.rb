@@ -1,4 +1,5 @@
-require './test/helper'
+require 'minitest/pride'
+require 'minitest/autorun'
 require_relative "../../headcount/lib/district_repository"
 require_relative "../../headcount/lib/district"
 
@@ -9,5 +10,5 @@ class DistrictRepositoryTest < Minitest::Test
     assert_instance_of DistrictRepository, dr
   end
 
-  
+
 end
