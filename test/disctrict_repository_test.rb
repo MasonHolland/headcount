@@ -1,7 +1,7 @@
 require 'minitest/pride'
 require 'minitest/autorun'
-require_relative "../../headcount/lib/district_repository"
-require_relative "../../headcount/lib/district"
+require "./lib/district_repository"
+require "./lib/district"
 
 class DistrictRepositoryTest < Minitest::Test
 
@@ -14,7 +14,7 @@ class DistrictRepositoryTest < Minitest::Test
     dr = DistrictRepository.new
     dr.load_data({
       :enrollment => {
-        :kindergarten => "./test/fixtures/kg_in_full_day.csv"}})
+        :kindergarten => "./data/Kindergartners in full-day program.csv"}})
     district = dr.find_by_name("Adams County 14")
     assert_equal "ADAMS COUNTY 14", district.name
     assert_instance_of District, district

@@ -1,4 +1,4 @@
-
+require 'csv'
 
 class DistrictRepository
 
@@ -7,7 +7,11 @@ class DistrictRepository
   end
 
   def load_data(path)
-
+    filename = path[:enrollment][:kindergarten]
+    contents =CSV.open(filename, headers: true, header_converters: :symbol)
+    contents.each do |row|
+      name = row[:Location]
+    end
     # CSV.open "enrollemnt hash path", headers: true header_converters: :symbol
   end
 
