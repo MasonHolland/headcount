@@ -3,28 +3,39 @@ require_relative 'district'
 require 'pry'
 
 class DistrictRepository
-  attr_reader :data
+  attr_accessor :data , :name
   attr_accessor :districts
   
   def initialize
-    @districts = [] 
+    @districts = []
   end
 
+
+  # def load_data(path)
+    # filename = path[:enrollment][:kindergarten]
+    # CSV.foreach(filename, headers: true, header_converters: :symbol) do |row|
+    #   name = row[:location].upcase
+    #   dis = District.new(:name => name.upcase)
+    #   @districts[dis.name] = dis
+      # end
   def load_data(args)
     @data = CSV.open args[:enrollment][:kindergarten], headers: true, header_converters: :symbol
-    # contents.foreach do |row|
+    # data.each do |row|
     #   name = row[:Location]
     # end
-    # CSV.open "enrollemnt hash path", headers: true header_converters: :symbol
+    # binding.pry
   end
 
   def find_by_name(name)
     data.each do |row|
       if row[:location] == name.upcase
-        districts = District.new(name)
+        district = District.new(row)
       end
       # binding.pry
     end
   end
 
 end
+
+# binding.pry
+""
