@@ -29,7 +29,7 @@ class DistrictRepository
   def find_by_name(name)
     data.each do |row|
       if row[:location] == name.upcase
-        district = District.new(row)
+        districts = District.new(row)
       end
       # binding.pry
     end
