@@ -2,7 +2,7 @@ require 'csv'
 
 class DistrictRepository
 
-  def initialize
+  def initialize(args)
     @districts = {}
   end
 
