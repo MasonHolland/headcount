@@ -1,5 +1,5 @@
 require './test/test_helper'
-require './lib/enrollment_repositoryg'
+require './lib/enrollment_repository'
 
 class TestEnrollmentRepository < Minitest::Test
 
@@ -12,6 +12,6 @@ class TestEnrollmentRepository < Minitest::Test
     er = EnrollmentRepository.new
     er.load_data({:enrollment => {:kindergarten => "./data/Kindergartners in full-day program.csv"}})
     enrollment = er.find_by_name("ACADEMY 20")
-    assert_equal "ACADEMY 20", enrollemnt.name
+    assert_equal "ACADEMY 20", enrollment.name
   end
 end
