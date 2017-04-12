@@ -2,7 +2,7 @@ require './test/test_helper'
 require "./lib/district_repository"
 require "./lib/district"
 
-class DistrictRepositoryTest < Minitest::Test
+class TestDistrictRepository < Minitest::Test
 
   def test_district_repo_exists
     dr = DistrictRepository.new
