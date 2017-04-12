@@ -15,10 +15,9 @@ class DistrictRepositoryTest < Minitest::Test
     dr.load_data({
       :enrollment => {
         :kindergarten => "./data/Kindergartners in full-day program.csv"}})
-    # binding.pry
     district = dr.find_by_name("Adams County 14")
     assert_equal "ADAMS COUNTY 14", district.name
-    # assert_instance_of District, district
+    assert_instance_of District, district
   end
 
 end
