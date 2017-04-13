@@ -1,6 +1,8 @@
+
+require 'bigdecimal'
+require 'pry'
 class Enrollment
-  
-  attr_reader :name
+  attr_reader :name, :kindergarten_participation
 
   def initialize(input, enrollment_repo = nil)
     @name = input[:name]
@@ -9,7 +11,13 @@ class Enrollment
   end
 
   def kindergarten_participation_by_year
-    @kindergarten_participation
+      kp = kindergarten_participation
+      kp.update(kp) do |key, v|
+        v.to_s[0..4].to_f
+      end
   end
 
+  def kindergarten_participation_in_year(year)
+    @kindergarten_participation[year].to_s[0..4].to_f
+  end
 end
