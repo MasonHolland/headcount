@@ -1,5 +1,4 @@
-require './test/test_helper'
-require './lib/enrollment'
+require_relative 'test_helper'
 
 class TestEnrollment < Minitest::Test
 
@@ -8,4 +7,5 @@ class TestEnrollment < Minitest::Test
     
     assert_instance_of Enrollment, e
   end
+
 end
