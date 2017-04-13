@@ -2,9 +2,8 @@ class District
 
   attr_reader :name
 
-  def initialize(input, district_repo = nil)
+  def initialize(input)
     @name = input[:name]
-    @dr = district_repo
   end
 
 end

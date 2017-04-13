@@ -6,7 +6,7 @@ class DistrictRepository
   attr_accessor :contents, :districts, :name
 
   def initialize
-    @districts = {}
+    @districts = []
   end
 
   def load_data(path)
@@ -23,14 +23,13 @@ class DistrictRepository
   end
 
   def find_all_matching(name)
-    inc = 0
+    # inc = 0
     if districts == {}
       return []
     else
       [districts.include?(districts[name.upcase])]
       inc += 1
     end
-    inc
   end
 
 
