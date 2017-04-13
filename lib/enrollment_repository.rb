@@ -12,7 +12,7 @@ class EnrollmentRepository
     CSV.foreach(path[:enrollment][:kindergarten], headers: true, header_converters: :symbol) do |row|
       name = row[:location].upcase
       years = row[:timeframe]
-      enrollment = Enrollment.new({:name => name}, self)
+      enrollment = Enrollment.new({:name => name})
       @enrollments[enrollment.name] = enrollment unless @enrollments.has_key?(name)
     end
   end
