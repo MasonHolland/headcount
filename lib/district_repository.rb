@@ -14,14 +14,11 @@ class DistrictRepository
       name = row[:location].upcase
       district = District.new({:name => name})
       @districts << district if @districts.none? { |existing| existing.name == district.name }
-      # binding.pry
     end
   end
 
-  def find_by_name(name)
-    # binding.pry
-    @districts.name.upcase
-    # @districts[name.upcase]
+  def find_by_name(region)
+    @districts.find {|dis| dis.name == region.upcase}
   end
 
   def find_all_matching(name)
