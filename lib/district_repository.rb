@@ -13,13 +13,15 @@ class DistrictRepository
     CSV.foreach(path[:enrollment][:kindergarten], headers: true, header_converters: :symbol) do |row|
       name = row[:location].upcase
       district = District.new({:name => name})
-      @districts[district.name] = district unless @districts.has_key?(name)
+      @districts << district if @districts.none? { |existing| existing.name == district.name }
       # binding.pry
     end
   end
 
   def find_by_name(name)
-    @districts[name.upcase]
+    # binding.pry
+    @districts.name.upcase
+    # @districts[name.upcase]
   end
 
   def find_all_matching(name)
