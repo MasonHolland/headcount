@@ -4,10 +4,10 @@ require 'pry'
 class Enrollment
   attr_reader :name, :kindergarten_participation
 
-  def initialize(input, enrollment_repo = nil)
+  def initialize(input)
     @name = input[:name]
     @kindergarten_participation = input[:kindergarten_participation]
-    @er = enrollment_repo
+    
   end
 
   def kindergarten_participation_by_year

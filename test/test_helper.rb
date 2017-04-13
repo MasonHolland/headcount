@@ -2,11 +2,9 @@ require 'simplecov'
 SimpleCov.start
 
 gem "minitest"
-
-# require "simplcov"
-# SimpleCov.start
 require "minitest/autorun"
 require "minitest/pride"
+require "pry"
 require_relative "../lib/district"
 require_relative "../lib/district_repository"
 require_relative "../lib/enrollment"
