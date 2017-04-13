@@ -21,13 +21,12 @@ class DistrictRepository
     @districts.find {|dis| dis.name == region.upcase}
   end
 
-  def find_all_matching(name)
-    # inc = 0
-    if districts == {}
-      return []
+  def find_all_matching(string)
+    if @districts != []
+      found = @districts.select {|dis| dis.name.include?(string.upcase)}
+      found.map { |district| district.name }
     else
-      [districts.include?(districts[name.upcase])]
-      inc += 1
+      []
     end
   end
 
