@@ -1,4 +1,5 @@
 class Enrollment
+  
   attr_reader :name
 
   def initialize(input, enrollment_repo = nil)

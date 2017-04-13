@@ -1,6 +1,5 @@
-require './test/test_helper'
-require "./lib/district_repository"
-require "./lib/district"
+require_relative "test_helper"
+
 
 class TestDistrictRepository < Minitest::Test
 
@@ -14,7 +13,7 @@ class TestDistrictRepository < Minitest::Test
     dr.load_data({:enrollment => {:kindergarten => "./data/Kindergartners in full-day program.csv"}})
     district = dr.find_by_name("Adams County 14")
     assert_equal "ADAMS COUNTY 14", district.name
-    assert_instance_of District, distric
+    assert_instance_of District, district
   end
 
 end

@@ -1,5 +1,4 @@
-require './test/test_helper'
-require './lib/enrollment_repository'
+require_relative "test_helper"
 
 class TestEnrollmentRepository < Minitest::Test
 
