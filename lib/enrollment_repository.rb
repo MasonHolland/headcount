@@ -4,7 +4,7 @@ require 'bigdecimal'
 require 'pry'
 
 class EnrollmentRepository
-  def initialize(enrollments = {})
+  def initialize(enrollments = [])
     @enrollments = enrollments
   end
 

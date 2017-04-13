@@ -5,14 +5,14 @@ require 'pry'
 class DistrictRepository
   attr_accessor :contents, :districts, :name
 
-  def initialize
-    @districts = []
+  def initialize(districts = [])
+    @districts = districts
   end
 
   def load_data(path)
     CSV.foreach(path[:enrollment][:kindergarten], headers: true, header_converters: :symbol) do |row|
       name = row[:location].upcase
-      district = District.new({:name => name}, self)
+      district = District.new({:name => name})
       @districts[district.name] = district unless @districts.has_key?(name)
       # binding.pry
     end
