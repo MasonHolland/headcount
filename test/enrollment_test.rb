@@ -1,6 +1,5 @@
 require_relative "test_helper"
 
-
 class TestEnrollment < Minitest::Test
 
   def test_it_exists
