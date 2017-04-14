@@ -68,11 +68,12 @@
         null,
         1,
         1,
+        1,
+        null,
         null,
         null
       ],
       "/Users/masonholland/turing/1module/projects/headcount/lib/enrollment_repository.rb": [
-        1,
         1,
         1,
         1,
@@ -91,17 +92,25 @@
         null,
         null,
         null,
+        null,
         1,
         0,
         null,
         null,
+        1,
         null,
+        null,
+        null,
+        1991,
+        null,
+        null,
+        1,
         null,
         null,
         null,
         null
       ]
     },
-    "timestamp": 1492123417
+    "timestamp": 1492139944
   }
 }

@@ -22,5 +22,20 @@ class TestEnrollmentRepository < Minitest::Test
       assert_equal "ACADEMY 20", enrollment.name
       enrollment = er.find_by_name("ADAMS COUNTY 14")
       assert_equal "ADAMS COUNTY 14", enrollment.name
-    end  
+    end
+
+    def test_loading_and_finding_enrollments
+      er = EnrollmentRepository.new
+      er.load_data({
+                     :enrollment => {
+                       :kindergarten => "./data/Kindergartners in full-day program.csv"
+                     }
+                   })
+
+      name = "GUNNISON WATERSHED RE1J"
+      enrollment = er.find_by_name(name)
+      assert_equal name, enrollment.name
+      assert enrollment.is_a?(Enrollment)
+      assert_in_delta 0.144, enrollment.kindergarten_participation_in_year(2004), 0.005
+    end
 end
