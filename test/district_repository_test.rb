@@ -1,4 +1,5 @@
 require_relative "test_helper"
+require 'pry'
 
 
 class TestDistrictRepository < Minitest::Test
@@ -32,7 +33,6 @@ class TestDistrictRepository < Minitest::Test
   end
 
   def test_district_enrollment_relationship_basics
-    skip
     dr = DistrictRepository.new
     dr.load_data({:enrollment => {:kindergarten => "./data/Kindergartners in full-day program.csv"}})
     district = dr.find_by_name("GUNNISON WATERSHED RE1J")
