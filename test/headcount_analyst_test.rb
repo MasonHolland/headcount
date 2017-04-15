@@ -11,7 +11,7 @@ class TestHeadcountAnalyst < Minitest::Test
   def test_headcount_analyst_initialized_with_dr
     ha = HeadcountAnalyst.new(DistrictRepository.new)
 
-    assert [], ha.district_repository
+    assert [], ha.district_repository.districts
   end
 
 
