@@ -2,6 +2,7 @@ require 'csv'
 require_relative 'enrollment'
 
 class EnrollmentRepository
+  attr_reader :enrollments
   def initialize(enrollments = [])
     @enrollments = enrollments
   end
@@ -11,7 +12,12 @@ class EnrollmentRepository
       name = row[:location].upcase
       year = row[:timeframe].to_i
       enrollment = Enrollment.new(enrollment_data_framework(name, year, row))
-      @enrollments << enrollment if @enrollments.none? { |existing| existing.name == enrollment.name }
+       if @enrollments.none? { |existing| existing.name == enrollment.name }
+        @enrollments << enrollment
+      else
+        d = Enrollment.new(enrollment_data_framework(name, year, row))
+        @enrollments.name = d
+        end
     end
   end
 
