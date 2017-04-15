@@ -36,6 +36,7 @@ class TestEnrollmentRepository < Minitest::Test
       enrollment = er.find_by_name(name)
       assert_equal name, enrollment.name
       assert enrollment.is_a?(Enrollment)
+      # binding.pry
       assert_in_delta 0.144, enrollment.kindergarten_participation_in_year(2004), 0.005
     end
 end

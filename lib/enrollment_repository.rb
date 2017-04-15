@@ -1,5 +1,6 @@
 require 'csv'
 require_relative 'enrollment'
+require 'pry'
 
 class EnrollmentRepository
   attr_reader :enrollments
@@ -11,13 +12,17 @@ class EnrollmentRepository
     CSV.foreach(path[:enrollment][:kindergarten], headers: true, header_converters: :symbol) do |row|
       name = row[:location].upcase
       year = row[:timeframe].to_i
-      enrollment = Enrollment.new(enrollment_data_framework(name, year, row))
-       if @enrollments.none? { |existing| existing.name == enrollment.name }
-        @enrollments << enrollment
-      else
-        d = Enrollment.new(enrollment_data_framework(name, year, row))
-        @enrollments.name = d
-        end
+      enro = Enrollment.new(enrollment_data_framework(name, year, row))
+       if @enrollments == []
+        @enrollments << enro
+       elsif @enrollments.none? { |existing| existing.name == enro.name }
+        @enrollments << enro
+       else
+        # binding.pry
+        find_enro = @enrollments.find { |existing| existing.name == enro.name }
+        find_enro.kindergarten_participation = find_enro.kindergarten_participation.merge(enro.kindergarten_participation)
+
+      end
     end
   end
 
