@@ -29,8 +29,8 @@
         1,
         null,
         1,
-        1,
-        1,
+        2,
+        2,
         null,
         null,
         1,
@@ -65,7 +65,7 @@
         1,
         1,
         1,
-        1,
+        2,
         null,
         null,
         1,
@@ -120,12 +120,15 @@
       ],
       "/Users/turinglaptop/Turing/1module/headcount/lib/headcount_analyst.rb": [
         1,
+        null,
         1,
+        null,
         1,
+        2,
         null,
         null
       ]
     },
-    "timestamp": 1492290183
+    "timestamp": 1492290389
   }
 }
