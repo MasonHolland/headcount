@@ -18,7 +18,6 @@ class EnrollmentRepository
        elsif @enrollments.none? { |existing| existing.name == enro.name }
         @enrollments << enro
        else
-        # binding.pry
         find_enro = @enrollments.find { |existing| existing.name == enro.name }
         find_enro.kindergarten_participation = find_enro.kindergarten_participation.merge(enro.kindergarten_participation)
 
