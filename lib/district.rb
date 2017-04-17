@@ -3,15 +3,13 @@ require_relative 'district_repository'
 class District
   attr_reader :name
 
-    def initialize(input)
+    def initialize(input, repo = nil)
       @name = input[:name]
-      @repo = input[:repo]
+      @repo = repo
     end
 
     def enrollment
-      distrepo = @repo
-      current_name = name
-      distrepo.enrollment_repository.find_by_name(current_name)
+      @repo.find_enrollment(name)
     end
 
 end

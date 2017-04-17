@@ -24,12 +24,16 @@ class DistrictRepository
       @districts[region.upcase] if @districts.has_key?(region.upcase)
     end
 
-    def find_all_matching(string)
-      if @districts != []
-        found = @districts.select {|dis| dis.name.include?(string.upcase)}
-        found.map { |district| district.name }
-      else
-        []
-      end
+    def find_enrollment(name)
+      @enrollment_repository.find_by_name(name)
     end
+
+    # def find_all_matching(string)
+    #   if @districts != []
+    #     found = @districts.select {|dis| dis.name.include?(string.upcase)}
+    #     found.map { |district| district.name }
+    #   else
+    #     []
+    #   end
+    # end
 end

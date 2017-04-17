@@ -18,6 +18,7 @@ class TestDistrictRepository < Minitest::Test
   end
 
   def test_district_repo_can_find_by_matching
+    skip
     dr = DistrictRepository.new
     dr.load_data({:enrollment => {:kindergarten => "./data/Kindergartners in full-day program.csv"}})
     district = dr.find_all_matching("Adams")
