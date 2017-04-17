@@ -27,8 +27,8 @@ class EnrollmentRepository
     @enrollments[name.upcase] if name
   end
 
-  def enrollment_data_framework(name, year, row)
-    { :name => name,
-      :kindergarten_participation => {year => row[:data]}}
-  end
+  # def enrollment_data_framework(name, year, row)
+  #   { :name => name,
+  #     :kindergarten_participation => {year => row[:data]}}
+  # end
 end

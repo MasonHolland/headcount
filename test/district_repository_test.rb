@@ -1,5 +1,5 @@
 require_relative "test_helper"
-require 'pry'
+
 
 
 class TestDistrictRepository < Minitest::Test
@@ -18,8 +18,10 @@ class TestDistrictRepository < Minitest::Test
   end
 
   def test_district_repo_can_find_by_matching
+    
     dr = DistrictRepository.new
     dr.load_data({:enrollment => {:kindergarten => "./data/Kindergartners in full-day program.csv"}})
+
     district = dr.find_all_matching("Adams")
     assert_equal ["ADAMS COUNTY 14", "ADAMS-ARAPAHOE 28J"], district
   end
@@ -28,7 +30,6 @@ class TestDistrictRepository < Minitest::Test
     dr = DistrictRepository.new
     dr.load_data({:enrollment => {:kindergarten => "./data/Kindergartners in full-day program.csv"}})
     district = dr.find_by_name("ACADEMY 20")
-
     assert_equal 0.436, district.enrollment.kindergarten_participation_in_year(2010)
   end
 
