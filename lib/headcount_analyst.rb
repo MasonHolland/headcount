@@ -17,4 +17,9 @@ class HeadcountAnalyst
       against = @district_repository.find_by_name(region_b[:against]).enrollment.kindergarten_participation_by_year.values.reduce(:+)/11
       (baseline / against).to_s[0..4].to_f
     end
+
+    def kindergarten_participation_rate_variation_trend(region_a, region_b)
+      
+
+    end
 end
