@@ -5,7 +5,7 @@ require_relative 'enrollment_repository'
 class DistrictRepository
   attr_accessor :contents, :districts, :name, :enrollment_repository
 
-    def initialize(districts = [])
+    def initialize(districts = {})
       @districts = districts
       @enrollment_repository = EnrollmentRepository.new
     end
