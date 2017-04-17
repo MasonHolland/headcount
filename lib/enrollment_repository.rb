@@ -11,9 +11,9 @@ class EnrollmentRepository
   def load_data(path)
     path[:enrollment].each do |symbol, file_path|
       CSV.foreach(file_path, headers: true, header_converters: :symbol) do |row|
-        name = row[:location]
+        name = row[:location].upcase
         year = row[:timeframe].to_i
-        if @enrollments[name] 
+        if @enrollments[name]
           @enrollments[name].kindergarten_participation[year] = row[:data]
         else
           enro = Enrollment.new({:name => name, :kindergarten_participation => {year => row[:data]}})
