@@ -21,7 +21,15 @@ class Enrollment
     end
 
     def graduation_rate_by_year 
-      @high_school_graduation
+      hsgrad = @high_school_graduation
+      hsgrad.update(hsgrad) do |key, v|
+        v.to_s[0..4].to_f
+      end
+    end
+
+    def graduation_rate_in_year(year)
+      hsgrad = @high_school_graduation[year]
+      hsgrad.to_s[0..4].to_f
     end
 
 end
