@@ -59,7 +59,7 @@ class TestEnrollmentRepository < Minitest::Test
      :high_school_graduation => "./data/High school graduation rates.csv"}})
 
     enrollment = er.find_by_name("ACADEMY 20")
-    binding.pry
+    # binding.pry
     assert_instance_of Enrollment, enrollment 
   end
 end
