@@ -3,7 +3,7 @@ require_relative 'enrollment'
 require 'pry'
 
 class EnrollmentRepository
-  attr_reader :enrollments
+  attr_accessor :enrollments
   def initialize(enrollments = {})
     @enrollments = enrollments
   end
