@@ -36,13 +36,13 @@ class HeadcountAnalyst
 
     def kindergarten_participation_against_high_school_graduation(district)
       against = {:against => 'COLORADO'}
-      @kg = kindergarten_participation_rate_variation(district, against)
-      @hs = high_school_graduation_rate_variation(district, against)
+      kg = kindergarten_participation_rate_variation(district, against)
+      hs = high_school_graduation_rate_variation(district, against)
       (kg/hs).to_s[0..4].to_f
     end
 
     def kindergarten_participation_correlates_with_high_school_graduation(district)
-      if district[:for] == ('STATEWIDE')
+      if district[:for] == "STATEWIDE"
         statewide_correlation(district)
       elsif district[:across]
         multiple_district_correlation(district)
@@ -53,29 +53,25 @@ class HeadcountAnalyst
 
     def single_district_correlation(district)
       sdc = kindergarten_participation_against_high_school_graduation(district[:for])
-      if sdc >= 0.6 && sdc <= 1.5
-        true
-      else
-        false
-      end
+      check_variance(sdc)
     end
 
     def multiple_district_correlation(districts)
       results = districts[:across].map do |district|
-      kindergarten_participation_against_high_school_graduation(district) >= 0.6 && kindergarten_participation_against_high_school_graduation(district) <= 1.5
+        check_variance(kindergarten_participation_against_high_school_graduation(district))
       end
 
       positive_correlations = results.count(true)
       total = results.count
-      positive_correlations / total >= 0.7
-
-
+      positive_correlations / total >= 0.70
       # dc = kindergarten_participation_against_high_school_graduation(district)
-
     end
 
     def statewide_correlation(district)
-
+      results = @district_repository.districts.keys.map do |district_name|
+        check_variance(kindergarten_participation_against_high_school_graduation(district_name))
+      end
+      (results.count(true) / (results.count)) >= 0.70
     end
 
     def check_variance(value)
