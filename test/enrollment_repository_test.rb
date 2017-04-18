@@ -56,10 +56,10 @@ class TestEnrollmentRepository < Minitest::Test
   def test_the_enrorepo_can_load_and_find_hs_by_name
     er = EnrollmentRepository.new
     er.load_data({:enrollment => {:kindergarten => "./data/Kindergartners in full-day program.csv",
-     :high_school_graduation = "./data/High school graduation rates.csv"}})
+     :high_school_graduation => "./data/High school graduation rates.csv"}})
 
     enrollment = er.find_by_name("ACADEMY 20")
-
+    binding.pry
     assert_instance_of Enrollment, enrollment 
   end
 end

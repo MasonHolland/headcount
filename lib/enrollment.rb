@@ -5,6 +5,7 @@ class Enrollment
     def initialize(input)
       @name = input[:name]
       @kindergarten_participation = input[:kindergarten_participation]
+      @high_school_graducation = input[:high_school_graduation]
     end
 
     def kindergarten_participation_by_year
