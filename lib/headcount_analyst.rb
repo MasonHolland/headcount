@@ -77,4 +77,12 @@ class HeadcountAnalyst
     def statewide_correlation(district)
 
     end
+
+    def check_variance(value)
+      if value >= 0.6 && value <= 1.5
+        true
+      else
+        false
+      end
+    end
 end
