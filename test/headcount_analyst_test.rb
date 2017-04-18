@@ -5,7 +5,7 @@ class TestHeadcountAnalyst < Minitest::Test
 
   def disrepo
     dr = DistrictRepository.new
-    dr.load_data({:enrollment => {:kindergarten => "./data/Kindergartners in full-day program.csv"}})
+    dr.load_data({:enrollment => {:kindergarten => "./data/Kindergartners in full-day program.csv", :high_school_graduation => "./data/High school graduation rates.csv"}})
     dr
   end
 
@@ -37,5 +37,20 @@ class TestHeadcountAnalyst < Minitest::Test
     ha = HeadcountAnalyst.new(disrepo)
 
     assert_equal ha.kindergarten_participation_rate_variation_trend('ACADEMY 20', :against => 'COLORADO'), {2004 => 1.258, 2005 => 0.96, 2006 => 1.05, 2007 => 0.992, 2008 => 0.717, 2009 => 0.652, 2010 => 0.681, 2011 => 0.727, 2012 => 0.687, 2013 => 0.693, 2014 => 0.661 }
+  end
+
+  def test_kindy_participation_against_high_school_graduation
+    ha = HeadcountAnalyst.new(disrepo)
+
+    assert_equal 0.641, ha.kindergarten_participation_against_high_school_graduation('ACADEMY 20')
+  end
+
+  def test_kindergarten_participation_correlates_with_high_school_graduation
+    ha = HeadcountAnalyst.new(disrepo)
+    ha.kindergarten_participation_rate_variation('ACADEMY 20', :against => 'COLORADO')
+    ha.high_school_graduation_rate_variation('ACADEMY 20', :against => 'COLORADO')
+    ha.kindergarten_participation_against_high_school_graduation('ACADEMY 20')
+    
+    assert ha.kindergarten_participation_correlates_with_high_school_graduation(for: 'ACADEMY 20')
   end
 end
