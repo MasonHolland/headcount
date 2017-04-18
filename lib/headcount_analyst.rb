@@ -44,8 +44,8 @@ class HeadcountAnalyst
     def kindergarten_participation_correlates_with_high_school_graduation(district)
       if district[:for] == ('STATEWIDE')
         statewide_correlation(district)
-      elsif district[:against]
-        district_correlation(district)
+      elsif district[:across]
+        multiple_district_correlation(district)
       else
         single_district_correlation(district)
       end
@@ -60,9 +60,21 @@ class HeadcountAnalyst
       end
     end
 
-    def district_correlation(district)
+    def multiple_district_correlation(districts)
+      results = districts[:across].map do |district|
+      kindergarten_participation_against_high_school_graduation(district) >= 0.6 && kindergarten_participation_against_high_school_graduation(district) <= 1.5
+      end
 
-      dc = kindergarten_participation_against_high_school_graduation(district)
+      positive_correlations = results.count(true)
+      total = results.count
+      positive_correlations / total >= 0.7
+
+
+      # dc = kindergarten_participation_against_high_school_graduation(district)
+
+    end
+
+    def statewide_correlation(district)
 
     end
 end

@@ -62,7 +62,7 @@ class TestHeadcountAnalyst < Minitest::Test
     region_1 = "ACADEMY 20"
     region_2 = "ADAMS COUNTY"
     region_3 = "AGATE 300"
-    coefficient = ha.kindergarten_participation_correlates_with_high_school_graduation(across: [region_1, region_2, region_3])
+    coefficient = ha.kindergarten_participation_correlates_with_high_school_graduation(:across =>  [region_1, region_2, region_3])
 
     refute coefficient
   end
