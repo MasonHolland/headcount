@@ -19,4 +19,9 @@ class Enrollment
       kp = @kindergarten_participation[year]
       kp.to_s[0..4].to_f
     end
+
+    def graduation_rate_by_year 
+      @high_school_graduation
+    end
+
 end
