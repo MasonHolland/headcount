@@ -50,7 +50,7 @@ class TestHeadcountAnalyst < Minitest::Test
     ha.kindergarten_participation_rate_variation('ACADEMY 20', :against => 'COLORADO')
     ha.high_school_graduation_rate_variation('ACADEMY 20', :against => 'COLORADO')
     ha.kindergarten_participation_against_high_school_graduation('ACADEMY 20')
-    
+
     assert ha.kindergarten_participation_correlates_with_high_school_graduation(for: 'ACADEMY 20')
   end
 end
