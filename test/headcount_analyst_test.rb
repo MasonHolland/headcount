@@ -55,6 +55,7 @@ class TestHeadcountAnalyst < Minitest::Test
   end
 
   def test_kindergarten_participation_correlates_with_high_school_graduation_for_multipled_districts
+    skip
     ha = HeadcountAnalyst.new(disrepo)
     ha.kindergarten_participation_rate_variation('ACADEMY 20', :against => 'COLORADO')
     ha.high_school_graduation_rate_variation('ACADEMY 20', :against => 'COLORADO')
@@ -62,8 +63,27 @@ class TestHeadcountAnalyst < Minitest::Test
     region_1 = "ACADEMY 20"
     region_2 = "ADAMS COUNTY"
     region_3 = "AGATE 300"
-    coefficient = ha.kindergarten_participation_correlates_with_high_school_graduation(:across =>  [region_1, region_2, region_3])
+    coefficient = ha.kindergarten_participation_correlates_with_high_school_graduation(:across => [region_1, region_2, region_3])
 
     refute coefficient
+  end
+
+  def test_kindergarten_participation_correlates_with_high_school_graduation_statewide
+    ha = HeadcountAnalyst.new(disrepo)
+    ha.kindergarten_participation_rate_variation('COLORADO', :against => 'COLORADO')
+    ha.high_school_graduation_rate_variation('COLORADO', :against => 'COLORADO')
+    ha.kindergarten_participation_against_high_school_graduation('COLORADO')
+  
+    coefficient = ha.kindergarten_participation_correlates_with_high_school_graduation(:for => "STATEWIDE")
+
+    assert coefficient
+  end
+  def test_check_variance
+    ha = HeadcountAnalyst.new(disrepo) 
+    x = 0.5
+    y = 1.1
+
+    refute ha.check_variance(x)
+    assert ha.check_variance(y)
   end
 end
