@@ -10,9 +10,3 @@ require "./test/headcount_analyst_test"
 require "./test/economic_profile_test"
 require "./test/economic_profile_repository_test"
 
-# require 'rake/testtask'
-
-# Rake::TestTask.new do |t|
-#   t.pattern = "test/*_test.rb"
-# end
-
