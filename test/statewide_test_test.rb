@@ -10,3 +10,8 @@ require_relative '../lib/statewide_test_repository'
        race_year_subject: {:all_students=>{2011=>{:math=>0.557}}},
        asian: {2011=>{:math=>0.709}}}
     end
+
+    def test_it_exists
+      st = StatewideTest.new
+      assert_instance_of StatewideTest, st
+    end
