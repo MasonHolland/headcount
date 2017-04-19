@@ -13,7 +13,7 @@ class StateWideTestRepository
         name = row[:location].upcase
         year = row[:timeframe].to_i
         # data = row[:data]
-        race = row[:race_ethinicity]
+        race = row[:race_ethnicity]
         score = row[:score]
         if symbol == :third_grade || symbol == :eighth_grade
           if symbol == :third_grade
@@ -37,7 +37,7 @@ class StateWideTestRepository
         :grade_year_subject => {},
         :race_year_subject => {}})
       end
-      steatwide_test = @statewide_tests[name]
+      statewide_test = @statewide_tests[name]
       if top_level_key == :third_grade || top_level_key == :eighth_grade
         root = statewide_test.grade_year_subject
       else
@@ -45,11 +45,12 @@ class StateWideTestRepository
       end
 
       root[top_level_key] = {} unless root.has_key?(top_level_key)
-      root[top_level_key][year] = {} unless root[top_level_key].has_key(year)
+      root[top_level_key][year] = {} unless root[top_level_key].has_key?(year)
+      binding.pry
       root[top_level_key][year][subject] = row.to_s[0..4].to_f
     end
 
-    def tind_by_name(name)
+    def find_by_name(name)
       @statewide_tests[name.upcase] if name
     end
   end
