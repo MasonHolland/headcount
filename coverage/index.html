@@ -14,27 +14,27 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2017-04-19T04:56:55-06:00">2017-04-19T04:56:55-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2017-04-19T05:28:02-06:00">2017-04-19T05:28:02-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">55.47%</span></span>
+    (<span class="covered_percent"><span class="red">40.6%</span></span>
      covered at
      <span class="covered_strength">
-       <span class="green">
-         1014.57
+       <span class="red">
+         0.39
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
-    <b>5</b> files in total.
-    <b>128</b> relevant lines. 
-    <span class="green"><b>71</b> lines covered</span> and
-    <span class="red"><b>57</b> lines missed </span>
+    <b>7</b> files in total.
+    <b>133</b> relevant lines. 
+    <span class="green"><b>54</b> lines covered</span> and
+    <span class="red"><b>79</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -71,23 +71,43 @@
       </tr>
       
       <tr>
+        <td class="strong"><a href="#49106b6c4ff71f826e2ee552c678cb56415fefa6" class="src_link" title="lib/economic_profile.rb">lib/economic_profile.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0.0</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#253c0bb87f50e217e59f964a5ae6955ca145a68a" class="src_link" title="lib/economic_profile_repository.rb">lib/economic_profile_repository.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>8</td>
+        <td>5</td>
+        <td>5</td>
+        <td>0</td>
+        <td>1.0</td>
+      </tr>
+      
+      <tr>
         <td class="strong"><a href="#46127864ec50b27ded571cba1d6c5f81deca1854" class="src_link" title="lib/enrollment.rb">lib/enrollment.rb</a></td>
-        <td class="red strong">76.19 %</td>
+        <td class="red strong">38.1 %</td>
         <td>35</td>
         <td>21</td>
-        <td>16</td>
-        <td>5</td>
-        <td>181.8</td>
+        <td>8</td>
+        <td>13</td>
+        <td>0.4</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#f829f756fb99b8d499d8f7ceab60b122748f29b2" class="src_link" title="lib/enrollment_repository.rb">lib/enrollment_repository.rb</a></td>
-        <td class="green strong">100.0 %</td>
+        <td class="red strong">39.13 %</td>
         <td>48</td>
         <td>23</td>
-        <td>23</td>
-        <td>0</td>
-        <td>5479.0</td>
+        <td>9</td>
+        <td>14</td>
+        <td>0.4</td>
       </tr>
       
       <tr>
@@ -476,14 +496,98 @@
   </pre>
 </div>
       
+        <div class="source_table" id="49106b6c4ff71f826e2ee552c678cb56415fefa6">
+  <div class="header">
+    <h3>lib/economic_profile.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>0</b> relevant lines. 
+      <span class="green"><b>0</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+    </ol>
+  </pre>
+</div>
+      
+        <div class="source_table" id="253c0bb87f50e217e59f964a5ae6955ca145a68a">
+  <div class="header">
+    <h3>lib/economic_profile_repository.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>5</b> relevant lines. 
+      <span class="green"><b>5</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">require &quot;csv&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="2">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="3">
+          <span class="hits">1</span>
+          
+          <code class="ruby">class EconomicProfileRepository</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="4">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def initialize</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="5">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @economic_profiles = {}</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="6">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    @row_object = &quot;&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="7">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="8">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+      
         <div class="source_table" id="46127864ec50b27ded571cba1d6c5f81deca1854">
   <div class="header">
     <h3>lib/enrollment.rb</h3>
-    <h4><span class="red">76.19 %</span> covered</h4>
+    <h4><span class="red">38.1 %</span> covered</h4>
     <div>
       <b>21</b> relevant lines. 
-      <span class="green"><b>16</b> lines covered</span> and
-      <span class="red"><b>5</b> lines missed.</span>
+      <span class="green"><b>8</b> lines covered</span> and
+      <span class="red"><b>13</b> lines missed.</span>
     </div>
   </div>
   
@@ -520,20 +624,20 @@
           <code class="ruby">    def initialize(input)</code>
         </li>
       
-        <li class="covered" data-hits="1267" data-linenumber="6">
-          <span class="hits">1267</span>
+        <li class="missed" data-hits="0" data-linenumber="6">
+          
           
           <code class="ruby">      @name = input[:name]</code>
         </li>
       
-        <li class="covered" data-hits="1267" data-linenumber="7">
-          <span class="hits">1267</span>
+        <li class="missed" data-hits="0" data-linenumber="7">
+          
           
           <code class="ruby">      @kindergarten_participation = input[:kindergarten_participation]</code>
         </li>
       
-        <li class="covered" data-hits="1267" data-linenumber="8">
-          <span class="hits">1267</span>
+        <li class="missed" data-hits="0" data-linenumber="8">
+          
           
           <code class="ruby">      @high_school_graduation = input[:high_school_graduation]</code>
         </li>
@@ -598,14 +702,14 @@
           <code class="ruby">    def kindergarten_participation_in_year(year)</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="19">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="19">
+          
           
           <code class="ruby">      kp = @kindergarten_participation[year]</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="20">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="20">
+          
           
           <code class="ruby">      kp.to_s[0..4].to_f</code>
         </li>
@@ -628,20 +732,20 @@
           <code class="ruby">    def graduation_rate_by_year </code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="24">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="24">
+          
           
           <code class="ruby">      hsgrad = @high_school_graduation</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="25">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="25">
+          
           
           <code class="ruby">      hsgrad.update(hsgrad) do |key, v|</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="26">
-          <span class="hits">5</span>
+        <li class="missed" data-hits="0" data-linenumber="26">
+          
           
           <code class="ruby">        v.to_s[0..4].to_f</code>
         </li>
@@ -707,11 +811,11 @@
         <div class="source_table" id="f829f756fb99b8d499d8f7ceab60b122748f29b2">
   <div class="header">
     <h3>lib/enrollment_repository.rb</h3>
-    <h4><span class="green">100.0 %</span> covered</h4>
+    <h4><span class="red">39.13 %</span> covered</h4>
     <div>
       <b>23</b> relevant lines. 
-      <span class="green"><b>23</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
+      <span class="green"><b>9</b> lines covered</span> and
+      <span class="red"><b>14</b> lines missed.</span>
     </div>
   </div>
   
@@ -760,8 +864,8 @@
           <code class="ruby">  def initialize(enrollments = {})</code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="8">
-          <span class="hits">8</span>
+        <li class="missed" data-hits="0" data-linenumber="8">
+          
           
           <code class="ruby">    @enrollments = enrollments</code>
         </li>
@@ -784,44 +888,44 @@
           <code class="ruby">  def load_data(path)</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="12">
-          <span class="hits">7</span>
+        <li class="missed" data-hits="0" data-linenumber="12">
+          
           
           <code class="ruby">    path[:enrollment].each do |symbol, file_path|</code>
         </li>
       
-        <li class="covered" data-hits="9" data-linenumber="13">
-          <span class="hits">9</span>
+        <li class="missed" data-hits="0" data-linenumber="13">
+          
           
           <code class="ruby">      CSV.foreach(file_path, headers: true, header_converters: :symbol) do |row|</code>
         </li>
       
-        <li class="covered" data-hits="15747" data-linenumber="14">
-          <span class="hits">15747</span>
+        <li class="missed" data-hits="0" data-linenumber="14">
+          
           
           <code class="ruby">        name = row[:location].upcase</code>
         </li>
       
-        <li class="covered" data-hits="15747" data-linenumber="15">
-          <span class="hits">15747</span>
+        <li class="missed" data-hits="0" data-linenumber="15">
+          
           
           <code class="ruby">        year = row[:timeframe].to_i</code>
         </li>
       
-        <li class="covered" data-hits="15747" data-linenumber="16">
-          <span class="hits">15747</span>
+        <li class="missed" data-hits="0" data-linenumber="16">
+          
           
           <code class="ruby">        primary = row[:data].to_f if symbol == :kindergarten</code>
         </li>
       
-        <li class="covered" data-hits="15747" data-linenumber="17">
-          <span class="hits">15747</span>
+        <li class="missed" data-hits="0" data-linenumber="17">
+          
           
           <code class="ruby">        high_school = row[:data].to_f if symbol == :high_school_graduation</code>
         </li>
       
-        <li class="covered" data-hits="15747" data-linenumber="18">
-          <span class="hits">15747</span>
+        <li class="missed" data-hits="0" data-linenumber="18">
+          
           
           <code class="ruby">        populate_enrollments(name, primary, high_school, year, symbol)</code>
         </li>
@@ -898,20 +1002,20 @@
           <code class="ruby">  def populate_enrollments(name, primary, high_school, year, symbol)</code>
         </li>
       
-        <li class="covered" data-hits="15747" data-linenumber="31">
-          <span class="hits">15747</span>
+        <li class="missed" data-hits="0" data-linenumber="31">
+          
           
           <code class="ruby">    if @enrollments[name]</code>
         </li>
       
-        <li class="covered" data-hits="14480" data-linenumber="32">
-          <span class="hits">14480</span>
+        <li class="missed" data-hits="0" data-linenumber="32">
+          
           
           <code class="ruby">          @enrollments[name].kindergarten_participation[year] = primary if symbol == :kindergarten</code>
         </li>
       
-        <li class="covered" data-hits="14480" data-linenumber="33">
-          <span class="hits">14480</span>
+        <li class="missed" data-hits="0" data-linenumber="33">
+          
           
           <code class="ruby">          @enrollments[name].high_school_graduation[year] = high_school if symbol == :high_school_graduation</code>
         </li>
@@ -922,14 +1026,14 @@
           <code class="ruby">    else </code>
         </li>
       
-        <li class="covered" data-hits="1267" data-linenumber="35">
-          <span class="hits">1267</span>
+        <li class="missed" data-hits="0" data-linenumber="35">
+          
           
           <code class="ruby">      enro = Enrollment.new({:name =&gt; name, :kindergarten_participation =&gt; {year =&gt; primary}, :high_school_graduation =&gt; Hash.new})</code>
         </li>
       
-        <li class="covered" data-hits="1267" data-linenumber="36">
-          <span class="hits">1267</span>
+        <li class="missed" data-hits="0" data-linenumber="36">
+          
           
           <code class="ruby">      @enrollments[name] = enro</code>
         </li>
@@ -958,8 +1062,8 @@
           <code class="ruby">  def find_by_name(name)</code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="41">
-          <span class="hits">8</span>
+        <li class="missed" data-hits="0" data-linenumber="41">
+          
           
           <code class="ruby">    @enrollments[name.upcase] if name</code>
         </li>
