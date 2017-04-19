@@ -9,6 +9,7 @@ class TestEconomicProfileRepository < Minitest::Test
   end
 
   def test_repo_can_populate_economic_profiles
+    skip
     er = EconomicProfileRepository.new 
     er.load_data({:economic_profile => {
       :median_household_income => "./data/Median household income.csv",
@@ -22,7 +23,7 @@ class TestEconomicProfileRepository < Minitest::Test
   end
 
   def test_repo_can_find_by_name
-    skip
+    # skip
     er = EconomicProfileRepository.new 
     er.load_data({:economic_profile => {
       :median_household_income => "./data/Median household income.csv",
