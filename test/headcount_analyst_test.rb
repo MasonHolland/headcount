@@ -18,7 +18,7 @@ class TestHeadcountAnalyst < Minitest::Test
   def test_headcount_analyst_initialized_with_dr
     ha = HeadcountAnalyst.new(disrepo)
 
-    assert [], ha.district_repository.districts
+    assert [], ha.distrepo.districts
   end
 
   def test_headcount_analyst_calculates_variation
@@ -47,39 +47,28 @@ class TestHeadcountAnalyst < Minitest::Test
 
   def test_kindergarten_participation_correlates_with_high_school_graduation
     ha = HeadcountAnalyst.new(disrepo)
-    ha.kindergarten_participation_rate_variation('ACADEMY 20', :against => 'COLORADO')
-    ha.high_school_graduation_rate_variation('ACADEMY 20', :against => 'COLORADO')
+
     ha.kindergarten_participation_against_high_school_graduation('ACADEMY 20')
 
     assert ha.kindergarten_participation_correlates_with_high_school_graduation(for: 'ACADEMY 20')
   end
 
   def test_kindergarten_participation_correlates_with_high_school_graduation_for_multipled_districts
-    skip
     ha = HeadcountAnalyst.new(disrepo)
-    ha.kindergarten_participation_rate_variation('ACADEMY 20', :against => 'COLORADO')
-    ha.high_school_graduation_rate_variation('ACADEMY 20', :against => 'COLORADO')
-    ha.kindergarten_participation_against_high_school_graduation('ACADEMY 20')
-    region_1 = "ACADEMY 20"
-    region_2 = "ADAMS COUNTY"
-    region_3 = "AGATE 300"
-    coefficient = ha.kindergarten_participation_correlates_with_high_school_graduation(:across => [region_1, region_2, region_3])
+    coefficient = ha.kindergarten_participation_correlates_with_high_school_graduation(:across => ["ACADEMY 20", "ADAMS COUNTY 14", "AGATE 300"])
 
     refute coefficient
   end
 
   def test_kindergarten_participation_correlates_with_high_school_graduation_statewide
     ha = HeadcountAnalyst.new(disrepo)
-    ha.kindergarten_participation_rate_variation('COLORADO', :against => 'COLORADO')
-    ha.high_school_graduation_rate_variation('COLORADO', :against => 'COLORADO')
-    ha.kindergarten_participation_against_high_school_graduation('COLORADO')
-  
     coefficient = ha.kindergarten_participation_correlates_with_high_school_graduation(:for => "STATEWIDE")
 
-    assert coefficient
+    refute coefficient
   end
+
   def test_check_variance
-    ha = HeadcountAnalyst.new(disrepo) 
+    ha = HeadcountAnalyst.new(disrepo)
     x = 0.5
     y = 1.1
 

@@ -1,36 +1,37 @@
 require_relative "district"
 require_relative "district_repository"
 require_relative 'enrollment'
+require_relative '../test/test_helper'
 require 'pry'
-require './test/test_helper'
 
 class HeadcountAnalyst
 
-  attr_reader :district_repository, :hs, :kg
+  attr_reader :distrepo, :hs, :kg
 
     def initialize(dis_rep)
-      @district_repository = dis_rep
+      @distrepo = dis_rep
     end
 
     def kindergarten_participation_rate_variation(region_a, region_b)
-      baseline = @district_repository.find_by_name(region_a).enrollment.kindergarten_participation_by_year.values.reduce(:+)/11
-      against = @district_repository.find_by_name(region_b[:against]).enrollment.kindergarten_participation_by_year.values.reduce(:+)/11
+      baseline = @distrepo.find_by_name(region_a).enrollment.kindergarten_participation_by_year.values.reduce(:+)/11
+      against = @distrepo.find_by_name(region_b[:against]).enrollment.kindergarten_participation_by_year.values.reduce(:+)/11
       (baseline / against).to_s[0..4].to_f
     end
 
     def kindergarten_participation_rate_variation_trend(region_a, region_b)
-      find_district = @district_repository.find_by_name(region_a)
-      find_against = @district_repository.find_by_name(region_b[:against])
-      a = find_district.enrollment.kindergarten_participation_by_year.sort.to_h
-      b = find_against.enrollment.kindergarten_participation_by_year.sort.to_h
+      found_district = @distrepo.find_by_name(region_a)
+      found_against = @distrepo.find_by_name(region_b[:against])
+      a = found_district.enrollment.kindergarten_participation_by_year.sort.to_h
+      b = found_against.enrollment.kindergarten_participation_by_year.sort.to_h
       a.merge(b){|key, oldval, newval| (oldval / newval).to_s[0..4].to_f}
     end
 
-    def high_school_graduation_rate_variation(region_a, region_b)
-      find_district = @district_repository.find_by_name(region_a)
-      find_against = @district_repository.find_by_name(region_b[:against])
-      baseline = @district_repository.find_by_name(region_a).enrollment.graduation_rate_by_year.values.reduce(:+)/11
-      against = @district_repository.find_by_name(region_b[:against]).enrollment.graduation_rate_by_year.values.reduce(:+)/11
+    def high_school_graduation_rate_variation(region, state)
+      found_district = @distrepo.find_by_name(region)
+      found_state = @distrepo.find_by_name(state[:against])
+      count = found_district.enrollment.graduation_rate_by_year.count
+      baseline = found_district.enrollment.graduation_rate_by_year.values.reduce(:+)/count
+      against = found_state.enrollment.graduation_rate_by_year.values.reduce(:+)/count
       (baseline / against).to_s[0..4].to_f
     end
 
@@ -60,18 +61,14 @@ class HeadcountAnalyst
       results = districts[:across].map do |district|
         check_variance(kindergarten_participation_against_high_school_graduation(district))
       end
-
-      positive_correlations = results.count(true)
-      total = results.count
-      positive_correlations / total >= 0.70
-      # dc = kindergarten_participation_against_high_school_graduation(district)
+      (results.count(true) / (results.count)) > 0.70
     end
 
     def statewide_correlation(district)
-      results = @district_repository.districts.keys.map do |district_name|
+      results = @distrepo.districts.keys.map do |district_name|
         check_variance(kindergarten_participation_against_high_school_graduation(district_name))
       end
-      (results.count(true) / (results.count)) >= 0.70
+      (results.count(true) / (results.count)) > 0.70
     end
 
     def check_variance(value)

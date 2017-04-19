@@ -16,13 +16,6 @@ class EnrollmentRepository
         primary = row[:data].to_f if symbol == :kindergarten
         high_school = row[:data].to_f if symbol == :high_school_graduation
         populate_enrollments(name, primary, high_school, year, symbol)
-
-        # if @enrollments[name]
-        #   @enrollments[name].kindergarten_participation[year] = row[:data]
-        # else
-        #   enro = Enrollment.new({:name => name, :kindergarten_participation => {year => row[:data]}})
-        #   @enrollments[name] = enro
-        # end
       end
     end
   end
@@ -31,7 +24,7 @@ class EnrollmentRepository
     if @enrollments[name]
           @enrollments[name].kindergarten_participation[year] = primary if symbol == :kindergarten
           @enrollments[name].high_school_graduation[year] = high_school if symbol == :high_school_graduation
-    else 
+    else
       enro = Enrollment.new({:name => name, :kindergarten_participation => {year => primary}, :high_school_graduation => Hash.new})
       @enrollments[name] = enro
     end
