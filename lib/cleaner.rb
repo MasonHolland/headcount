@@ -33,7 +33,7 @@ class Cleaner
       0
     elsif data != nil && data.include?(".")
       data.to_f.round(3)
-    elsif data != Fixnum ||  data != float
+    elsif data != Fixnum || data != float
       "N/A"
     else
       data.to_i

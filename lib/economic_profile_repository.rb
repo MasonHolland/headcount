@@ -5,13 +5,13 @@ require_relative "cleaner"
 class EconomicProfileRepository
   attr_reader   :economic_profiles, :row_object
   def initialize
-    @economic_profiles = {}
+    @economic_profiles = Hash.new(0)
     @row_object = nil
   end
 
   def load_data(path)
     path[:economic_profile].each do |symbol, file_path|
-      CSV.foreach(file_path, headers: true, header_converters: symbol) do |row|
+      CSV.foreach(file_path, headers: true, header_converters: :symbol) do |row|
         @row_object = row
         populate_eco_repo(row, symbol)
       end
@@ -23,6 +23,7 @@ class EconomicProfileRepository
   end
 
   def populate_eco_repo(row, symbol)
+    # binding.pry
     eco_prof_key = @economic_profiles[Cleaner.input_name(row)]
     if eco_prof_key != 0
       eco_prof_populate(row, symbol, eco_prof_key)
@@ -34,7 +35,7 @@ class EconomicProfileRepository
   def eco_prof_populate(row, symbol, eco_prof_key)
     add_income(row, symbol, eco_prof_key) if median_symbol(symbol)
     add_poverty(row, eco_prof_key)        if poverty_symbol(symbol, row)
-    add_lunch(row, eco_prof_key)          if lunch_symbol(row)
+    add_lunch(row, eco_prof_key)          if lunch_symbol(symbol, row)
     add_title_i(row, eco_prof_key)        if title_i_symbol(symbol)
   end
 
@@ -60,6 +61,7 @@ class EconomicProfileRepository
   end
 
   def add_income(row, symbol, eco_prof_key)
+    # binding.pry
     eco_prof_key.median_household_income[Cleaner.year(row, symbol)] = Cleaner.data(row)
   end
   
@@ -68,7 +70,7 @@ class EconomicProfileRepository
   end
 
   def add_lunch(row, eco_prof_key)
-    lunch_set = eco_prof_key.free_or_reduced_lunch
+    lunch_set = eco_prof_key.free_or_reduced_price_lunch
     lunch_set[Cleaner.year(row)][(Cleaner.dataformat(row))] = Cleaner.lunch_data(row)
   end
 
