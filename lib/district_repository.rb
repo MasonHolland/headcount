@@ -21,7 +21,7 @@ class DistrictRepository
     end
 
     def find_by_name(region)
-      @districts[region] if @districts.has_key?(region)
+      @districts[region.upcase] if @districts.has_key?(region.upcase)
     end
 
     def find_enrollment(name)
