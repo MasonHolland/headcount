@@ -9,7 +9,7 @@ class StateWideTestRepository
 
   def load_data(path)
     path[:statewide_testing].each do |symbol, file_path|
-      csv.foreach(file_path, heads: true, headers_converters: :symbol) do |row|
+      CSV.foreach(file_path, headers: true, header_converters: :symbol) do |row|
         name = row[:location].upcase
         year = row[:timeframe].to_i
         # data = row[:data]

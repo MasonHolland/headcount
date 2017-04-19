@@ -3,33 +3,33 @@ require_relative '../lib/statewide_test_repository'
 require_relative '../lib/district_repository'
 require_relative '../lib/headcount_analyst'
 
-class StatewideTestRepositoryTest < Minitest::Test
+class StateWideTestRepositoryTest < Minitest::Test
 
   def test_statewide_test_repo_exists
-    statewide = StatewideTestRepository.new
-    assert_instance_of StatewideTestRepository, statewide
+    statewide = StateWideTestRepository.new
+    assert_instance_of StateWideTestRepository, statewide
   end
 
   def test_statewide_test_repo_find_name
-    statewide_repo = StatewideTestRepository.new
-    statewide_repo.load_data({:statewide_testing => {:third_grade => "./test/fixtures/3rd_grade.csv",
-        :eighth_grade => "./test/fixtures/8th_grade.csv",
-        :math => "./test/fixtures/math.csv",
-        :reading => "./test/fixtures/reading.csv",
-        :writing => "./test/fixtures/writing.csv"}})
+    statewide_repo = StateWideTestRepository.new
+    statewide_repo.load_data({:statewide_testing => {:third_grade => "./data/3rd grade students scoring proficient o.csvr above on the CSAP_TCAP.csv",
+        :eighth_grade => "./data/8th grade students scoring proficient or above on the CSAP_TCAP.csv",
+        :math => "./data/Average proficiency on the CSAP_TCAP by race_ethnicity_ Math.csv",
+        :reading => "./data/Average proficiency on the CSAP_TCAP by race_ethnicity_ Reading.csv",
+        :writing => "./data/Average proficiency on the CSAP_TCAP by race_ethnicity_ Writing.csv"}})
 
     st = statewide_repo.find_by_name("ACADEMY 20")
     assert_equal "ACADEMY 20", st.name
   end
 
   def test_statewide_test_repo_proficient_by_grade
-    statewide_repo = StatewideTestRepository.new
+    statewide_repo = StateWideTestRepository.new
     statewide_repo.load_data({
-      :statewide_testing => {:third_grade => "./test/fixtures/3rd_grade.csv",
-        :eighth_grade => "./test/fixtures/8th_grade.csv",
-        :math => "./test/fixtures/math.csv",
-        :reading => "./test/fixtures/reading.csv",
-        :writing => "./test/fixtures/writing.csv"}})
+      :statewide_testing => {:third_grade => "./data/3rd grade students scoring proficient or above on the CSAP_TCAP.csv",
+        :eighth_grade => "./data/8th grade students scoring proficient or above on the CSAP_TCAP.csv",
+        :math => "./data/Average proficiency on the CSAP_TCAP by race_ethnicity_ Math.csv",
+        :reading => "./data/Average proficiency on the CSAP_TCAP by race_ethnicity_ Reading.csv",
+        :writing => "./data/Average proficiency on the CSAP_TCAP by race_ethnicity_ Writing.csv"}})
 
     st = statewide_repo.find_by_name("ACADEMY 20")
     year_hash = st.proficient_by_grade(:eighth_grade)
@@ -49,13 +49,13 @@ class StatewideTestRepositoryTest < Minitest::Test
   end
 
   def test_statewide_test_repo_proficient_by_race
-    statewide_repo = StatewideTestRepository.new
+    statewide_repo = StateWideTestRepository.new
     statewide_repo.load_data({
-      :statewide_testing => {:third_grade => "./test/fixtures/3rd_grade.csv",
-        :eighth_grade => "./test/fixtures/8th_grade.csv",
-        :math => "./test/fixtures/math.csv",
-        :reading => "./test/fixtures/reading.csv",
-        :writing => "./test/fixtures/writing.csv"}})
+      :statewide_testing => {:third_grade => "./data/3rd grade students scoring proficient or above on the CSAP_TCAP.csv",
+        :eighth_grade => "./data/8th grade students scoring proficient or above on the CSAP_TCAP.csv",
+        :math => "./data/Average proficiency on the CSAP_TCAP by race_ethnicity_ Math.csv",
+        :reading => "./data/Average proficiency on the CSAP_TCAP by race_ethnicity_ Reading.csv",
+        :writing => "./data/Average proficiency on the CSAP_TCAP by race_ethnicity_ Writing.csv"}})
 
     st = statewide_repo.find_by_name("ACADEMY 20")
     year_hash = st.proficient_by_race_or_ethnicity(:asian)
@@ -75,13 +75,13 @@ class StatewideTestRepositoryTest < Minitest::Test
 
     def test_statewide_test_repo_proficient_for_subject_by_grade_in_year
 
-  statewide_repo = StatewideTestRepository.new
+  statewide_repo = StateWideTestRepository.new
   statewide_repo.load_data({
-    :statewide_testing => {:third_grade => "./test/fixtures/3rd_grade.csv",
-      :eighth_grade => "./test/fixtures/8th_grade.csv",
-      :math => "./test/fixtures/math.csv",
-      :reading => "./test/fixtures/reading.csv",
-      :writing => "./test/fixtures/writing.csv"}})
+    :statewide_testing => {:third_grade => "./data/3rd grade students scoring proficient or above on the CSAP_TCAP.csv",
+      :eighth_grade => "./data/8th grade students scoring proficient or above on the CSAP_TCAP.csv",
+      :math => "./data/Average proficiency on the CSAP_TCAP by race_ethnicity_ Math.csv",
+      :reading => "./data/Average proficiency on the CSAP_TCAP by race_ethnicity_ Reading.csv",
+      :writing => "./data/Average proficiency on the CSAP_TCAP by race_ethnicity_ Writing.csv"}})
 
   st = statewide_repo.find_by_name("ACADEMY 20")
   proficiency = st.proficient_for_subject_by_grade_in_year(:math, :third_grade, 2009)
@@ -91,13 +91,13 @@ class StatewideTestRepositoryTest < Minitest::Test
 
 
   def test_statewide_test_repo_proficient_for_subject_by_race_in_year
-    statewide_repo = StatewideTestRepository.new
+    statewide_repo = StateWideTestRepository.new
     statewide_repo.load_data({
-      :statewide_testing => {:third_grade => "./test/fixtures/3rd_grade.csv",
-        :eighth_grade => "./test/fixtures/8th_grade.csv",
-        :math => "./test/fixtures/math.csv",
-        :reading => "./test/fixtures/reading.csv",
-        :writing => "./test/fixtures/writing.csv"}})
+      :statewide_testing => {:third_grade => "./data/3rd grade students scoring proficient or above on the CSAP_TCAP.csv",
+        :eighth_grade => "./data/8th grade students scoring proficient or above on the CSAP_TCAP.csv",
+        :math => "./data/Average proficiency on the CSAP_TCAP by race_ethnicity_ Math.csv",
+        :reading => "./data/Average proficiency on the CSAP_TCAP by race_ethnicity_ Reading.csv",
+        :writing => "./data/Average proficiency on the CSAP_TCAP by race_ethnicity_ Writing.csv"}})
 
     st = statewide_repo.find_by_name("ACADEMY 20")
     proficiency = st.proficient_for_subject_by_race_in_year(:math, :asian, 2011)
