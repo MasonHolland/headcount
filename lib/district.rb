@@ -1,7 +1,8 @@
 require_relative 'district_repository'
+require_relative 'statewide_test'
 
 class District
-  attr_reader :name
+  attr_reader :name, :statewide_test
 
     def initialize(input, repo = nil)
       @name = input[:name]
@@ -13,7 +14,7 @@ class District
     end
 
     def statewide_test
-      @repo.find_statewide_test(@name)
+      @repo.statewide_repository.find_statewide_test(@name)
     end
 
 end

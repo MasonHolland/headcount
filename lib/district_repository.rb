@@ -3,7 +3,7 @@ require_relative 'district'
 require_relative 'enrollment_repository'
 
 class DistrictRepository
-  attr_accessor :districts, :enrollment_repository
+  attr_accessor :districts, :enrollment_repository, :statewide_repository
 
     def initialize
       @districts = {}
@@ -31,6 +31,7 @@ class DistrictRepository
 
     def find_statewide_test(name)
       @statewide_repository.find_by_name(name)
+    end
 
     def find_all_matching(name_fragment)
       found_districts = []
@@ -40,5 +41,4 @@ class DistrictRepository
       end
      found_districts
     end
-  end
 end
