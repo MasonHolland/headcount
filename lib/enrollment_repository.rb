@@ -10,7 +10,7 @@ class EnrollmentRepository
 
   def load_data(path)
     path[:enrollment].each do |symbol, file_path|
-      CSV.foreach(file_path, headers: true, header_converters: :symbol) do |row|
+      CSV.foreach(file_path, headers: true, header_converters: symbol) do |row|
         name = row[:location].upcase
         year = row[:timeframe].to_i
         primary = row[:data].to_f if symbol == :kindergarten
