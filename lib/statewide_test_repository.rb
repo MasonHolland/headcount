@@ -1,5 +1,6 @@
 require 'csv'
 require_relative 'statewide_test'
+require_relative 'cleaner'
 
 class StateWideTestRepository
 
@@ -46,8 +47,7 @@ class StateWideTestRepository
 
       root[top_level_key] = {} unless root.has_key?(top_level_key)
       root[top_level_key][year] = {} unless root[top_level_key].has_key?(year)
-      binding.pry
-      root[top_level_key][year][subject] = row.to_s[0..4].to_f
+      root[top_level_key][year][subject] = Cleaner.data(row)
     end
 
     def find_by_name(name)

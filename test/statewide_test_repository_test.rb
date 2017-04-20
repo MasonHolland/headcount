@@ -2,7 +2,6 @@ require_relative 'test_helper'
 require_relative '../lib/statewide_test_repository'
 require_relative '../lib/district_repository'
 require_relative '../lib/headcount_analyst'
-require 'pry'
 
 class StateWideTestRepositoryTest < Minitest::Test
 
@@ -102,7 +101,6 @@ class StateWideTestRepositoryTest < Minitest::Test
 
     st = statewide_repo.find_by_name("ACADEMY 20")
     proficiency = st.proficient_for_subject_by_race_in_year(:math, :asian, 2011)
-    binding.pry
     assert_in_delta 0.816, proficiency, 0.005
   end
 end
