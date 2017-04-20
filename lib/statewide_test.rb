@@ -1,8 +1,7 @@
 require_relative 'state_errors'
 require_relative 'cleaner'
-require 'pry'
 
-class StateWideTest
+class StatewideTest
   attr_reader :name, :grade_year_subject, :race_year_subject, :error
 
     def initialize(input = {})

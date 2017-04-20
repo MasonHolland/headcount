@@ -2,7 +2,7 @@ require 'csv'
 require_relative 'statewide_test'
 require_relative 'cleaner'
 
-class StateWideTestRepository
+class StatewideTestRepository
 
   def initialize
     @statewide_tests = {}
@@ -34,7 +34,7 @@ class StateWideTestRepository
 
   def make_statewide_test(name, year, top_level_key, subject, row)
     unless @statewide_tests.has_key?(name)
-      @statewide_tests[name] = StateWideTest.new({:name => name,
+      @statewide_tests[name] = StatewideTest.new({:name => name,
         :grade_year_subject => {},
         :race_year_subject => {}})
       end
