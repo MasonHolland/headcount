@@ -31,7 +31,7 @@ class StateWideTestTest < Minitest::Test
 
   def test_statewide_test_has_race_data
    st = StateWideTest.new(data)
-   actual = {:all_students=>{2011=>{:math=>0.557}}}
+   actual = {:third_grade=>{2008=>{:math=>0.697}}}
    assert_equal actual, st.race_year_subject
    assert_equal Hash, st.race_year_subject.class
  end

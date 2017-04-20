@@ -8,6 +8,8 @@ class DistrictRepository
     def initialize
       @districts = {}
       @enrollment_repository = EnrollmentRepository.new
+      @statewide_repository = StatewideTestRepository.new
+      @economic_profile = EconomicProfileRepository.new
     end
 
     def load_data(path)
@@ -27,6 +29,9 @@ class DistrictRepository
     def find_enrollment(name)
       @enrollment_repository.find_by_name(name)
     end
+
+    def find_statewide_test(name)
+      @statewide_repository.find_by_name(name)
 
     def find_all_matching(name_fragment)
       found_districts = []

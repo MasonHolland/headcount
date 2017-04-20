@@ -13,7 +13,7 @@ class TestDistrictRepository < Minitest::Test
   def test_district_repo_initializes_with_empty_hash_for_districts
     dr = DistrictRepository.new
     expected = {}
-  
+
     assert_equal expected, dr.districts
   end
 
@@ -50,7 +50,6 @@ class TestDistrictRepository < Minitest::Test
   end
 
   def test_enrollment_analysis_basics
-    skip
     dr = DistrictRepository.new
     dr.load_data({:enrollment => {:kindergarten => "./data/Kindergartners in full-day program.csv"}})
     ha = HeadcountAnalyst.new(dr)
