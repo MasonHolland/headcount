@@ -19,7 +19,6 @@ class DistrictRepository
         district = District.new({:name => name.upcase}, self)
         @districts[district.name] = district unless @districts.has_key?(name)
       end
-
     end
 
     def find_by_name(region)
@@ -41,4 +40,5 @@ class DistrictRepository
       end
      found_districts
     end
+  end
 end

@@ -2,7 +2,6 @@ require_relative "district"
 require_relative "district_repository"
 require_relative 'enrollment'
 require_relative '../test/test_helper'
-require 'pry'
 
 class HeadcountAnalyst
 
@@ -12,23 +11,27 @@ class HeadcountAnalyst
       @distrepo = dis_rep
     end
 
+    def drnf(region_x)
+      @distrepo.find_by_name(region_x)
+    end
+
     def kindergarten_participation_rate_variation(region_a, region_b)
-      baseline = @distrepo.find_by_name(region_a).enrollment.kindergarten_participation_by_year.values.reduce(:+)/11
-      against = @distrepo.find_by_name(region_b[:against]).enrollment.kindergarten_participation_by_year.values.reduce(:+)/11
+      baseline = drnf(region_a).enrollment.kindergarten_participation_by_year.values.reduce(:+)/11
+      against = drnf(region_b[:against]).enrollment.kindergarten_participation_by_year.values.reduce(:+)/11
       (baseline / against).to_s[0..4].to_f
     end
 
     def kindergarten_participation_rate_variation_trend(region_a, region_b)
-      found_district = @distrepo.find_by_name(region_a)
-      found_against = @distrepo.find_by_name(region_b[:against])
+      found_district = drnf(region_a)
+      found_against = drnf(region_b[:against])
       a = found_district.enrollment.kindergarten_participation_by_year.sort.to_h
       b = found_against.enrollment.kindergarten_participation_by_year.sort.to_h
       a.merge(b){|key, oldval, newval| (oldval / newval).to_s[0..4].to_f}
     end
 
     def high_school_graduation_rate_variation(region, state)
-      found_district = @distrepo.find_by_name(region)
-      found_state = @distrepo.find_by_name(state[:against])
+      found_district = drnf(region)
+      found_state = drnf(state[:against])
       count = found_district.enrollment.graduation_rate_by_year.count
       baseline = found_district.enrollment.graduation_rate_by_year.values.reduce(:+)/count
       against = found_state.enrollment.graduation_rate_by_year.values.reduce(:+)/count
@@ -72,10 +75,6 @@ class HeadcountAnalyst
     end
 
     def check_variance(value)
-      if value >= 0.6 && value <= 1.5
-        true
-      else
-        false
-      end
+     value >= 0.6 && value <= 1.5
     end
 end
